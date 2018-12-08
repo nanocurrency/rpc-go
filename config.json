@@ -1,0 +1,8 @@
+{
+	"port": 8080,
+	"hostname": "localhost",
+	"node": {
+		"connection": "local:///tmp/nano",
+		"poolsize": 10
+	}
+}
