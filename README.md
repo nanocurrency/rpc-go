@@ -1,7 +1,19 @@
 # About
 
-`rpc-go` is an external Nano RPC server written in Go. It receives JSON requests from clients
-and forwards them to the node via its IPC mechanism, which supports domain sockets or tcp.
+`rpc-go` is an external Nano RPC server written in Go. It receives JSON requests from clients and forwards them to the node via its IPC mechanism. The node currently supports domain sockets and TCP.
+
+# Build
+
+Clone the repository and run `make`
+
+If you want to build with the go tool manually, see Makefile for relevant commands.
+
+# Run
+Change `config.json` as needed and run:
+
+```
+bin/rpc-go
+```
 
 # Configuration
 
@@ -29,26 +41,6 @@ Replace the connection line with something like the following to use TCP instead
 ```
 
 The host and port must match the IPC configuration of the Nano node.
-
-# Build
-
-Clone the repository and build with the `go` tool.
-
-```
-git clone https://gitcom.com/nanocurrency/rpc-go
-cd rpc-go
-
-export GOPATH=`pwd`
-cd src/cmd/rpc-go
-go install
-```
-
-# Run
-Configure config.json and run:
-
-```
-bin/rpc-go
-```
 
 # IDE notes for developers
 
