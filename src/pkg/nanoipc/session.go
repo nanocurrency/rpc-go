@@ -102,10 +102,9 @@ func (s *Session) Request(request string) ([]byte, *Error) {
 	defer s.mutex.Unlock()
 
 	// RPC legacy IPC type
-	const PROTOCOL_ENCODING = 1
 	const PROTOCOL_PREAMBLE_LEAD = 'N'
-	const PROTOCOL_VERSION_MAJOR = 1
-	const PROTOCOL_VERSION_MINOR = 0
+	const PROTOCOL_ENCODING = 1
+	const PROTOCOL_RESERVED = 0
 
 	var bufResponse []byte
 	var errReply *Error
@@ -121,8 +120,8 @@ func (s *Session) Request(request string) ([]byte, *Error) {
 			preamble = [4]byte{
 				PROTOCOL_PREAMBLE_LEAD,
 				PROTOCOL_ENCODING,
-				PROTOCOL_VERSION_MAJOR,
-				PROTOCOL_VERSION_MAJOR}
+				PROTOCOL_RESERVED,
+				PROTOCOL_RESERVED}
 			s.updateWriteDeadline()
 			if _, err = s.connection.Write(preamble[:]); err != nil {
 				sc.Err = &Error{1, err.Error(), "Network"}
