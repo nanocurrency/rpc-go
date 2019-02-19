@@ -125,7 +125,7 @@ func (server *RestServer) handler(resp http.ResponseWriter, req *http.Request) {
 				responseBytes = rb
 			}
 		}).Do(func() {
-			log.Println(string(responseBytes))
+			// log.Println(string(responseBytes))
 			resp.Write(responseBytes)
 		}).Failure(func() {
 			log.Println("Request failed")

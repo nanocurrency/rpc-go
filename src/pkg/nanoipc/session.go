@@ -45,7 +45,7 @@ func (s *Session) Connect(connectionString string) *Error {
 			s.TimeoutConnection = 15
 		}
 		if s.TimeoutReadWrite == 0 {
-			s.TimeoutReadWrite = 30
+			s.TimeoutReadWrite = 30000
 		}
 		dialContext := (&net.Dialer{
 			KeepAlive: 30 * time.Second,
